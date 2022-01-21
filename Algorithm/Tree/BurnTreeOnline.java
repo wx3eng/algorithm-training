@@ -8,7 +8,7 @@ public class BurnTreeOnline {
         if (root == null || target == null) {
             return 0;
         }
-        int[] result = {0, 0}; // [0] as global max, [1] as a flag to indicate if the starting node is found.
+        int[] result = {0, 0}; // [0] as global max, [1] as a flag to indicate if the target node is found.
         // the flag is to make sure the target is within the tree
         timeToBurn(root, target, result);
         if (result[1] == 1) {
