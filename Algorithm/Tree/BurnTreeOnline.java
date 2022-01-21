@@ -44,7 +44,7 @@ public class BurnTreeOnline {
         * the traversed part, so the time to burn the tree with the current node on the path will add 1 to account for
         * burning of the current node. We will not compare it with the global max as we know this must not be the answer
         *
-        * 3. If one of the returned values is negative, the other is positive, it means the target is in one of the
+        * 3. If one of the returned values is negative, the other must be positive, it means the target is in one of the
         * subtree, so the fire is burning up from the target to this node in the subtree with negative returned value,
         * then burns down the other subtree with positive returned value. Thus, we do abs(left) + abs(right) + 1. This
         * is potentially the answer, so we will need to compare it with the global max
@@ -56,7 +56,7 @@ public class BurnTreeOnline {
             return -1;
         } else if (left >= 0 && right >= 0) { //&& root != target  <= this is condition 2
             return Math.max(left, right) + 1;
-        } else { // condition 3
+        } else { // left < 0 or right < 0  <= this is condition 3
             result[0] = Math.max(result[0], Math.abs(left) + Math.abs(right) + 1);
             return left < 0 ? left - 1 : right - 1;
         }
