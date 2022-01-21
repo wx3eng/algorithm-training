@@ -22,10 +22,14 @@ public class BurnTree {
         for (int i = 0; i < pathToRoot.size(); i++) {
             TreeNode node = pathToRoot.get(i);
             int otherBranchHeight;
-            if (!visited.contains(node.left)) {
-                otherBranchHeight = getHeight(node.left);
+            if (i == 0) {
+                otherBranchHeight = Math.max(getHeight(node.left), getHeight(node.right));
             } else {
-                otherBranchHeight = getHeight(node.right);
+                if (!visited.contains(node.left)) {
+                    otherBranchHeight = getHeight(node.left);
+                } else {
+                    otherBranchHeight = getHeight(node.right);
+                }
             }
             result = Math.max(result, otherBranchHeight + i + 1);
         }
@@ -69,6 +73,6 @@ public class BurnTree {
         TreeArrayConvert converter = new TreeArrayConvert();
         TreeNode root1 = converter.constructTree(new Integer[]{0, 1, 2, 3, 4, 5, 6});
         TreeNode root2 = converter.constructTree(new Integer[]{0, 1, 2, 3, 4, 5, 6, 7});
-        System.out.println(result.timeToBurn(root1, root1.right.left));
+        System.out.println(result.timeToBurn(root2, root2.left));
     }
 }
