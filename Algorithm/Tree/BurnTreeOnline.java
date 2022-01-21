@@ -24,7 +24,7 @@ public class BurnTreeOnline {
         }
         // ask from left & right child
         int left = timeToBurn(root.left, target, result);
-        int right = timeToBurn(root.right, target,result);
+        int right = timeToBurn(root.right, target, result);
         /*
         * *** Meaning of the returned values ***
         * (+) target is NOT in the left subtree or right subtree of the child node, the returned positive
@@ -52,7 +52,7 @@ public class BurnTreeOnline {
         // condition 1
         if (root == target) {
             result[1] = 1;
-            result[0] = Math.max(result[0], Math.max(Math.abs(left), Math.abs(right) + 1));
+            result[0] = Math.max(result[0], Math.max(Math.abs(left), Math.abs(right)) + 1);
             return -1;
         } else if (left >= 0 && right >= 0) { //&& root != target  <= this is condition 2
             return Math.max(left, right) + 1;
